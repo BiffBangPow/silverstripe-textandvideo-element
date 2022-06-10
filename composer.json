@@ -1,6 +1,6 @@
 {
-  "name": "biffbangpow/silverstripe-elementmodule-template",
-  "description": "A basic skeleton for a Silverstripe 4 elemental module",
+  "name": "biffbangpow/silverstripe-textandvideo-element",
+  "description": "Text and Video content element",
   "type": "silverstripe-vendormodule",
   "minimum-stability": "dev",
   "license": "proprietary",
@@ -17,7 +17,8 @@
   "require": {
     "silverstripe/vendor-plugin": "^1.0",
     "silverstripe/cms": "^4",
-    "dnadesign/silverstripe-elemental": "^4@stable || ^3@stable"
+    "dnadesign/silverstripe-elemental": "^4@stable || ^3@stable",
+    "biffbangpow/silverstripe-cta-extension": "^1.0"
   },
   "autoload": {
     "psr-4": {
