@@ -18,7 +18,8 @@
     "silverstripe/vendor-plugin": "^1.0",
     "silverstripe/cms": "^4",
     "dnadesign/silverstripe-elemental": "^4@stable || ^3@stable",
-    "biffbangpow/silverstripe-cta-extension": "^1.0"
+    "biffbangpow/silverstripe-cta-extension": "^1.0",
+    "biffbangpow/silverstripe-element-spacing": "^1"
   },
   "autoload": {
     "psr-4": {

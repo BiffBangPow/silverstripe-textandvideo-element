@@ -23,7 +23,17 @@ class TextAndVideoElement extends BaseElement
         'Content' => 'HTMLText',
         'VideoEmbed' => 'Varchar',
         'VideoType' => 'Varchar',
-        'VideoWidthClass' => 'Varchar'
+        'VideoWidthClass' => 'Varchar',
+        'VideoFirst' => 'Boolean'
+    ];
+
+    private static $width_classes = [
+        'col-lg-3' => '1/4 width',
+        'col-lg-4' => '1/3 width',
+        'col-lg-6' => '1/2 width',
+        'col-lg-8' => '2/3 width',
+        'col-lg-9' => '3/4 width',
+        'col-lg-12' => 'Full width'
     ];
 
     private static $extensions = [
@@ -40,12 +50,8 @@ class TextAndVideoElement extends BaseElement
         $fields->removeByName(['VideoWidthClass']);
         $fields->addFieldsToTab('Root.Main', [
             HTMLEditorField::create('Content'),
-            DropdownField::create('VideoWidthClass', 'Set video width on larger screens', [
-                'quarter' => '1/4 width',
-                'half' => '1/2 width',
-                'threequarter' => '3/4 width',
-                'full' => 'Full width'
-            ]),
+            DropdownField::create('VideoWidthClass', 'Set video width on larger screens',
+                $this->config()->get('width_classes')),
             DropdownField::create('VideoType', 'Video Type', [
                 'youtube' => 'YouTube',
                 'vimeo' => 'Vimeo'
@@ -65,6 +71,6 @@ class TextAndVideoElement extends BaseElement
 
     public function getSimpleClassName()
     {
-        return 'text-and-video-element';
+        return 'bbp-text-and-video-element';
     }
 }
