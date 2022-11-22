@@ -18,6 +18,7 @@ class TextAndVideoElement extends BaseElement
     private static $singular_name = 'text and video element';
     private static $plural_name = 'text and video elements';
     private static $description = 'Displays a video embed and optional text';
+    private static $inline_editable = false;
 
     private static $db = [
         'Content' => 'HTMLText',
