@@ -37,6 +37,10 @@ class TextAndVideoElement extends BaseElement
         'col-lg-12' => 'Full width'
     ];
 
+    private static $defaults = [
+        'VideoWidthClass' => 'col-lg-6'
+    ];
+
     private static $extensions = [
         CallToActionExtension::class
     ];

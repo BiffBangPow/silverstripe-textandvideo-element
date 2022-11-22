@@ -5,7 +5,7 @@
                 <% if $ShowTitle %>
                     <h3 class="mb-4 title">$Title</h3>
                 <% end_if %>
-                <div>$Text</div>
+                <div>$Content</div>
                 <% if $CTAType != 'None' %>
                     <div class="cta">
                         <p>
