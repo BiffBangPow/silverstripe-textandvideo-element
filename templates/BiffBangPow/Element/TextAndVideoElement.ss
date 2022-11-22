@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="row<% if $VideoFirst %> flex-row-reverse<% end_if %>">
+    <div class="row<% if $VideoFirst %> order-last<% end_if %>">
         <div class="py-4 textvideo-text col-12 col-lg flex-lg-grow">
             <div class="text">
                 <% if $ShowTitle %>
