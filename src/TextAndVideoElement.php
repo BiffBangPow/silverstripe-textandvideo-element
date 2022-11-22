@@ -21,7 +21,7 @@ class TextAndVideoElement extends BaseElement
 
     private static $db = [
         'Content' => 'HTMLText',
-        'VideoEmbed' => 'Varchar',
+        'VideoLink' => 'Varchar',
         'VideoType' => 'Varchar',
         'VideoWidthClass' => 'Varchar',
         'VideoFirst' => 'Boolean'
@@ -56,7 +56,8 @@ class TextAndVideoElement extends BaseElement
                 'youtube' => 'YouTube',
                 'vimeo' => 'Vimeo'
             ]),
-            TextField::create('VideoEmbed', 'Video Link')
+            TextField::create('VideoLink', 'Video Link')
+                ->setDescription('Enter the full link, eg: https://www.youtube.com/watch?v=YE7VzlLtp-4')
         ]);
         return $fields;
     }
@@ -72,5 +73,71 @@ class TextAndVideoElement extends BaseElement
     public function getSimpleClassName()
     {
         return 'bbp-text-and-video-element';
+    }
+
+    /**
+     * Get the video ID
+     * @return bool|string|null
+     */
+    public function getVideoID()
+    {
+        $vID = null;
+        switch ($this->VideoType) {
+            case 'youtube':
+                $vID = $this->getYouTubeVideoID();
+                break;
+            case 'vimeo':
+                $vID = $this->getVimeoVideoID();
+                break;
+        }
+        return $vID;
+    }
+
+    /**
+     * @return bool|string
+     */
+    public function getYouTubeVideoID()
+    {
+        $link = $this->VideoLink;
+        if ($link == '') {
+            return false;
+        }
+
+        $parsedURL = parse_url($link, PHP_URL_QUERY);
+        if ($parsedURL === false) {
+            return false;
+        }
+
+        parse_str($parsedURL, $params);
+        if (array_key_exists('v', $params)) {
+            return $params['v'];
+        }
+
+        return false;
+    }
+
+    /**
+     * @return bool|string
+     */
+    public function getVimeoVideoID()
+    {
+        $link = $this->VideoLink;
+        if ($link == '') {
+            return false;
+        }
+
+        $parsedURL = parse_url($link, PHP_URL_PATH);
+        if ($parsedURL === false) {
+            return false;
+        }
+
+        $result = preg_match_all('/\d+/', $parsedURL, $matches);
+
+        if ($result !== false && $result !== 0) {
+            $videoID = $matches[0][0];
+            return $videoID;
+        }
+
+        return false;
     }
 }

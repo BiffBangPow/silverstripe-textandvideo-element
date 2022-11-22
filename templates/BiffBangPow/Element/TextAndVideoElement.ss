@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="row<% if $ImageFirst %> flex-row-reverse<% end_if %>">
+    <div class="row<% if $VideoFirst %> flex-row-reverse<% end_if %>">
         <div class="py-4 textvideo-text col-12 col-lg flex-lg-grow">
             <div class="text">
                 <% if $ShowTitle %>
@@ -20,7 +20,7 @@
                 <% end_if %>
             </div>
         </div>
-        <div class="textvideo-video col-12 $ImageWidthClass">
+        <div class="textvideo-video col-12 $VideoWidthClass">
             <div class="ratio ratio-16x9">
                 <% if $VideoType == 'youtube' %>
                     <iframe title="$Title" class="video w-100 m-lg-auto" type="text/html"
