@@ -1,6 +1,6 @@
 <div class="container">
-    <div class="row<% if $VideoFirst %> order-last<% end_if %>">
-        <div class="py-4 textvideo-text col-12 col-lg flex-lg-grow">
+    <div class="row">
+        <div class="py-4 textvideo-text col-12 col-lg flex-lg-grow<% if $VideoFirst %> order-last<% end_if %>">
             <div class="text">
                 <% if $ShowTitle %>
                     <h3 class="mb-4 title">$Title</h3>
